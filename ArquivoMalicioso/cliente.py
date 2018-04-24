@@ -7,18 +7,18 @@ PORT = 9999
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
-print("[+] Connected with Server")
+print("[+] Conectado  com o servidor")
 
-# get file name to send
-f_send = "C:\\Users\\Alberto Zaranza\\Documents\\BCC\\S6\\Sistemas Distribuídos\\Script\\script.bat"
-# open file
+# pega o nome do arquivo para envio
+f_send = "C:\\script.bat"
+# abre o arquivo
 with open(f_send, "rb") as f:
-    # send file
-    print("[+] Sending file...")
+    # envia o arquivo
+    print("[+] Enviando arquivo...")
     data = f.read()
     s.sendall(data)
 
-    # close connection
+    # fecha a conexão
     s.close()
-    print("[-] Disconnected")
+    print("[-] Disconectado")
     sys.exit(0)

